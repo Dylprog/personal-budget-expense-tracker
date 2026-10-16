@@ -1,0 +1,15 @@
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Local database
+backend/budget_tracker.db
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# Environment variables
+.env

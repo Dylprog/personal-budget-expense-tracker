@@ -14,7 +14,7 @@ def get_connection():
 def initialise_database():
     """Create the transactions table if it does not exist."""
     connection = get_connection()
-
+    # data table for transactions
     connection.execute("""
         CREATE TABLE IF NOT EXISTS transactions (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -25,6 +25,17 @@ def initialise_database():
             date TEXT NOT NULL
         )
     """)
+    # data table for budgets
+    connection.execute(""" 
+        CREATE TABLE IF NOT EXISTS budgets (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            category TEXT NOT NULL,
+            month TEXT NOT NULL,
+            limit_amount REAL NOT NULL CHECK (limit_amount > 0),
+            UNIQUE (category, month)
+        )
+    """)
+
 
     connection.commit()
     connection.close()
