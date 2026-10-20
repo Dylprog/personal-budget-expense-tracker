@@ -1,7 +1,12 @@
 
 import sqlite3
+import os
 
-DATABASE = "budget_tracker.db"
+DATABASE = os.environ.get(
+    "DATABASE_PATH",
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), "budget_tracker.db")
+)
+
 
 
 def get_connection():
